@@ -80,3 +80,23 @@ Demo Notebooks:
 
  - [R/automl\_regression\_powerplant\_output.Rmd](./R/automl_regression_powerplant_output.Rmd) [<img src="https://www.r-project.org//favicon-16x16.png" width=18>](https://www.r-project.org//favicon-16x16.png)
  - [Python/automl\_regression\_powerplant\_output.ipynb](./Python/automl_regression_powerplant_output.ipynb) [<img src="https://www.python.org/static/favicon.ico"  width=16>](https://www.python.org/static/favicon.ico)
+
+## Part 3: Lending Club
+
+For the AutoML Lending Club demo, we use the [Lending Club](https://github.com/navdeep-G/sdss-h2o-automl/blob/master/data/LoanStats3a.csv) dataset ([Lending Club] (https://www.lendingclub.com/) is a peer-to-peer lending platform).  The goal here is to predict if a borrower will default or not given various features about their financial history.
+
+In this tutorial, you will:
+
+- Perform Basic dataframe manipulations
+- Creating a target (response column)
+- Feature preprocessing & engineering
+- Splitting the data into training and validation sets
+- Building models (GLM & GBM)
+- Evaluating model performance
+- Run a grid search
+- Run AutoML
+
+Demo Notebooks:
+
+ - [Python/automl\_lending\_club.ipynb](./Python/automl_lending_club.ipynb) [<img src="https://www.python.org/static/favicon.ico"  width=16>](https://www.python.org/static/favicon.ico)
+
