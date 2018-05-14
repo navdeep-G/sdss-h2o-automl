@@ -8,7 +8,7 @@ The current version of AutoML (in H2O 3.18.*) trains and cross-validates a defau
 
 - New features and improvements planned for AutoML are listed [here](https://0xdata.atlassian.net/issues/?filter=21603).
 
-## Setting up environment for demos:
+## Setting Up Environment for AutoML Demos:
 
 ### R
 ```
