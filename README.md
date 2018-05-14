@@ -83,7 +83,7 @@ Demo Notebooks:
 
 ## Part 3: Lending Club
 
-For the AutoML Lending Club demo, we use the [Lending Club](https://github.com/navdeep-G/sdss-h2o-automl/blob/master/data/LoanStats3a.csv) dataset ([Lending Club] (https://www.lendingclub.com/) is a peer-to-peer lending platform).  The goal here is to predict if a borrower will default or not given various features about their financial history.
+For the AutoML Lending Club demo, we use the [Lending Club](https://github.com/navdeep-G/sdss-h2o-automl/blob/master/data/LoanStats3a.csv) dataset ([Lending Club](https://www.lendingclub.com/) is a peer-to-peer lending platform).  The goal here is to predict if a borrower will default or not given various features about their financial history.
 
 In this tutorial, you will:
 
