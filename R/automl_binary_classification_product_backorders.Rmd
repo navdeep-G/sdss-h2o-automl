@@ -24,13 +24,7 @@ h2o.no_progress()  # Turn off progress bars for notebook readability
 For the AutoML binary classification demo, we use a subset of the [Product Backorders](https://www.kaggle.com/tiredgeek/predict-bo-trial/data) dataset.  The goal here is to predict whether or not a product will be put on backorder status, given a number of product metrics such as current inventory, transit time, demand forecasts and prior sales.
 
 ```{r}
-# Use local data file or download from GitHub
-docker_data_path <- "/home/h2o/data/automl/product_backorders.csv"
-if (file.exists(docker_data_path)) {
-  data_path <- docker_data_path
-} else {
-  data_path <- "../data/product_backorders.csv"
-}
+data_path <- "../data/product_backorders.csv"
 
 # Load data into H2O
 df <- h2o.importFile(data_path)

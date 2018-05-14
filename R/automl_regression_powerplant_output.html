@@ -152,17 +152,25 @@ $(document).ready(function () {
 ##     colnames&lt;-, ifelse, is.character, is.factor, is.numeric, log,
 ##     log10, log1p, log2, round, signif, trunc</code></pre>
 <pre class="r"><code>h2o.init()</code></pre>
-<pre><code>##  Connection successful!
+<pre><code>## 
+## H2O is not running yet, starting it now...
+## 
+## Note:  In case of errors look at the following log files:
+##     /var/folders/55/rj4cny_s29q4vn1wjt_x08sm0000gn/T//Rtmp5F8ufE/h2o_navdeepgill_started_from_r.out
+##     /var/folders/55/rj4cny_s29q4vn1wjt_x08sm0000gn/T//Rtmp5F8ufE/h2o_navdeepgill_started_from_r.err
+## 
+## 
+## Starting H2O JVM and connecting: ... Connection successful!
 ## 
 ## R is connected to the H2O cluster: 
-##     H2O cluster uptime:         9 minutes 27 seconds 
+##     H2O cluster uptime:         2 seconds 954 milliseconds 
 ##     H2O cluster timezone:       America/Los_Angeles 
 ##     H2O data parsing timezone:  UTC 
 ##     H2O cluster version:        3.18.0.9 
-##     H2O cluster version age:    6 hours and 37 minutes  
-##     H2O cluster name:           H2O_started_from_R_navdeepgill_pdz629 
+##     H2O cluster version age:    3 days  
+##     H2O cluster name:           H2O_started_from_R_navdeepgill_kmu567 
 ##     H2O cluster total nodes:    1 
-##     H2O cluster total memory:   2.72 GB 
+##     H2O cluster total memory:   3.56 GB 
 ##     H2O cluster total cores:    8 
 ##     H2O cluster allowed cores:  8 
 ##     H2O cluster healthy:        TRUE 
@@ -177,13 +185,7 @@ $(document).ready(function () {
 <div id="load-data" class="section level3">
 <h3>Load Data</h3>
 <p>For the AutoML regression demo, we use the <a href="http://archive.ics.uci.edu/ml/datasets/Combined+Cycle+Power+Plant">Combined Cycle Power Plant</a> dataset. The goal here is to predict the energy output (in megawatts), given the temperature, ambient pressure, relative humidity and exhaust vacuum values. In this demo, you will use H2O’s AutoML to outperform the <a href="https://www.sciencedirect.com/science/article/pii/S0142061514000908">state of the art results</a> on this task.</p>
-<pre class="r"><code># Use local data file or download from GitHub
-docker_data_path &lt;- &quot;/home/h2o/data/automl/powerplant_output.csv&quot;
-if (file.exists(docker_data_path)) {
-  data_path &lt;- docker_data_path
-} else {
-  data_path &lt;- &quot;../data/powerplant_output.csv&quot;
-}
+<pre class="r"><code>data_path &lt;- &quot;../data/powerplant_output.csv&quot;
 
 # Load data into H2O
 df &lt;- h2o.importFile(data_path)</code></pre>
@@ -234,38 +236,38 @@ test &lt;- splits[[2]]</code></pre>
 <p>A default performance metric for each machine learning task (binary classification, multiclass classification, regression) is specified internally and the leaderboard will be sorted by that metric. In the case of regression, the default ranking metric is mean residual deviance. In the future, the user will be able to specify any of the H2O metrics so that different metrics can be used to generate rankings on the leaderboard.</p>
 <pre class="r"><code>print(aml@leaderboard)</code></pre>
 <pre><code>##                                                model_id
-## 1    StackedEnsemble_AllModels_0_AutoML_20180511_163156
-## 2    StackedEnsemble_AllModels_0_AutoML_20180511_162820
-## 3             GBM_grid_0_AutoML_20180511_163156_model_3
-## 4             GBM_grid_0_AutoML_20180511_162820_model_3
-## 5 StackedEnsemble_BestOfFamily_0_AutoML_20180511_162820
-## 6             GBM_grid_0_AutoML_20180511_162820_model_2
+## 1    StackedEnsemble_AllModels_0_AutoML_20180514_110327
+## 2             GBM_grid_0_AutoML_20180514_110327_model_3
+## 3 StackedEnsemble_BestOfFamily_0_AutoML_20180514_110327
+## 4             GBM_grid_0_AutoML_20180514_110327_model_2
+## 5             GBM_grid_0_AutoML_20180514_110327_model_1
+## 6             GBM_grid_0_AutoML_20180514_110327_model_0
 ##   mean_residual_deviance     rmse      mae       rmsle
-## 1               11.54653 3.398019 2.371376 0.007477937
-## 2               11.57878 3.402761 2.376234 0.007488154
-## 3               11.60563 3.406704 2.396905 0.007495953
-## 4               11.60563 3.406704 2.396905 0.007495953
-## 5               11.82629 3.438937 2.407181 0.007572003
-## 6               12.19937 3.492760 2.491203 0.007678287
+## 1               11.57878 3.402761 2.376234 0.007488154
+## 2               11.60563 3.406704 2.396905 0.007495953
+## 3               11.82647 3.438964 2.407224 0.007572099
+## 4               12.19937 3.492760 2.491203 0.007678287
+## 5               12.43432 3.526233 2.531572 0.007750876
+## 6               12.71426 3.565706 2.564423 0.007831780
 ## 
-## [38 rows x 5 columns]</code></pre>
+## [20 rows x 5 columns]</code></pre>
 <pre class="r"><code>print(aml2@leaderboard)</code></pre>
 <pre><code>##                                                model_id
-## 1    StackedEnsemble_AllModels_0_AutoML_20180511_163306
-## 2    StackedEnsemble_AllModels_0_AutoML_20180511_162928
-## 3 StackedEnsemble_BestOfFamily_0_AutoML_20180511_162928
-## 4             GBM_grid_0_AutoML_20180511_163306_model_3
-## 5             GBM_grid_0_AutoML_20180511_162928_model_3
-## 6             GBM_grid_0_AutoML_20180511_163306_model_2
+## 1    StackedEnsemble_AllModels_0_AutoML_20180514_110434
+## 2 StackedEnsemble_BestOfFamily_0_AutoML_20180514_110434
+## 3             GBM_grid_0_AutoML_20180514_110434_model_3
+## 4             GBM_grid_0_AutoML_20180514_110434_model_2
+## 5             GBM_grid_0_AutoML_20180514_110434_model_1
+## 6             GBM_grid_0_AutoML_20180514_110434_model_0
 ##   mean_residual_deviance     rmse      mae       rmsle
-## 1               10.64342 3.262426 2.344464 0.007163976
-## 2               10.66136 3.265174 2.347188 0.007169908
-## 3               11.02491 3.320379 2.380280 0.007293086
-## 4               11.07594 3.328054 2.396320 0.007306256
-## 5               11.07594 3.328054 2.396320 0.007306256
-## 6               11.43782 3.381984 2.455111 0.007421388
+## 1               10.60649 3.256761 2.338363 0.007152643
+## 2               11.02491 3.320379 2.380280 0.007293086
+## 3               11.07594 3.328054 2.396320 0.007306256
+## 4               11.43782 3.381984 2.455111 0.007421388
+## 5               11.64729 3.412812 2.480284 0.007487085
+## 6               11.90976 3.451052 2.520750 0.007565821
 ## 
-## [34 rows x 5 columns]</code></pre>
+## [19 rows x 5 columns]</code></pre>
 <p>This dataset comes from the <a href="http://archive.ics.uci.edu/ml/datasets/Combined+Cycle+Power+Plant">UCI Machine Learning Repository</a> of machine learning datasets. The data was used in a <a href="https://www.sciencedirect.com/science/article/pii/S0142061514000908">publication</a> in the <em>International Journal of Electrical Power &amp; Energy Systems</em> in 2014. In the paper, the authors achieved a mean absolute error (MAE) of 2.818 and a Root Mean-Squared Error (RMSE) of 3.787 on their best model. So, with H2O’s AutoML, we’ve already beaten the state-of-the-art in just 60 seconds of compute time!</p>
 </div>
 <div id="predict-using-leader-model" class="section level2">
@@ -274,22 +276,22 @@ test &lt;- splits[[2]]</code></pre>
 <pre class="r"><code>pred &lt;- h2o.predict(aml, test)  # predict(aml, test) and h2o.predict(aml@leader, test) also work
 head(pred)</code></pre>
 <pre><code>##    predict
-## 1 488.5680
-## 2 475.0566
-## 3 464.2477
-## 4 453.3033
-## 5 447.5729
-## 6 470.1987</code></pre>
+## 1 488.5325
+## 2 475.0950
+## 3 464.2581
+## 4 453.3897
+## 5 447.5632
+## 6 470.2217</code></pre>
 <p>If needed, the standard <code>h2o.performance()</code> function can be applied to the AutoML leader model and a test set to generate an H2O model performance object.</p>
 <pre class="r"><code>perf &lt;- h2o.performance(aml@leader, test)
 perf</code></pre>
 <pre><code>## H2ORegressionMetrics: stackedensemble
 ## 
-## MSE:  11.54653
-## RMSE:  3.398019
-## MAE:  2.371376
-## RMSLE:  0.007477937
-## Mean Residual Deviance :  11.54653</code></pre>
+## MSE:  11.57878
+## RMSE:  3.402761
+## MAE:  2.376234
+## RMSLE:  0.007488154
+## Mean Residual Deviance :  11.57878</code></pre>
 </div>
 
 

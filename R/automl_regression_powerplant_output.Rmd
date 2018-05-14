@@ -24,13 +24,7 @@ h2o.no_progress()  # Turn off progress bars for notebook readability
 For the AutoML regression demo, we use the [Combined Cycle Power Plant](http://archive.ics.uci.edu/ml/datasets/Combined+Cycle+Power+Plant) dataset.  The goal here is to predict the energy output (in megawatts), given the temperature, ambient pressure, relative humidity and exhaust vacuum values.  In this demo, you will use H2O's AutoML to outperform the [state of the art results](https://www.sciencedirect.com/science/article/pii/S0142061514000908) on this task.
 
 ```{r}
-# Use local data file or download from GitHub
-docker_data_path <- "/home/h2o/data/automl/powerplant_output.csv"
-if (file.exists(docker_data_path)) {
-  data_path <- docker_data_path
-} else {
-  data_path <- "../data/powerplant_output.csv"
-}
+data_path <- "../data/powerplant_output.csv"
 
 # Load data into H2O
 df <- h2o.importFile(data_path)
