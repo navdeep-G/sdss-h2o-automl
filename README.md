@@ -8,6 +8,39 @@ The current version of AutoML (in H2O 3.18.*) trains and cross-validates a defau
 
 - New features and improvements planned for AutoML are listed [here](https://0xdata.atlassian.net/issues/?filter=21603).
 
+## Setting up environment for demos:
+
+### R
+```
+# The following two commands remove any previously installed H2O packages for R.
+if ("package:h2o" %in% search()) { detach("package:h2o", unload=TRUE) }
+if ("h2o" %in% rownames(installed.packages())) { remove.packages("h2o") }
+
+# Next, we download packages that H2O depends on.
+pkgs <- c("RCurl","jsonlite")
+for (pkg in pkgs) {
+if (! (pkg %in% rownames(installed.packages()))) { install.packages(pkg) }
+}
+
+# Now we download, install and initialize the H2O package for R.
+install.packages("h2o", type="source", repos="http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/9/R")
+```
+
+### Python
+```
+pip install requests
+pip install tabulate
+pip install scikit-learn
+pip install colorama
+pip install future
+```
+```
+# The following command removes the H2O module for Python.
+pip uninstall h2o
+
+# Next, use pip to install this version of the H2O Python module.
+pip install http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/9/Python/h2o-3.18.0.9-py2.py3-none-any.whl
+```
 ## Part 1: Binary Classification
 
 For the AutoML binary classification demo, we use a subset of the [Product Backorders](https://www.kaggle.com/tiredgeek/predict-bo-trial/data) dataset.  The goal here is to predict whether or not a product will be put on backorder status, given a number of product metrics such as current inventory, transit time, demand forecasts and prior sales.
