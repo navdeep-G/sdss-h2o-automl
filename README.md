@@ -98,5 +98,6 @@ In this tutorial, you will:
 
 Demo Notebooks:
 
+ - [R/automl\_lending\_club.Rmd](./R/automl_lending_club.Rmd) [<img src="https://www.r-project.org//favicon-16x16.png" width=18>](https://www.r-project.org//favicon-16x16.png)
  - [Python/automl\_lending\_club.ipynb](./Python/automl_lending_club.ipynb) [<img src="https://www.python.org/static/favicon.ico"  width=16>](https://www.python.org/static/favicon.ico)
 
