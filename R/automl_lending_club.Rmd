@@ -7,7 +7,7 @@ output:
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. To execute a code chunk, click *Run* (play) button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
 
-If you're viewing the Rmd file (code only), but you'd like to see the code *and* output rendered as an HTML document, an online HTML of this file is available [here](https://github.com/navdeep-G/sdss-h2o-automl/R/automl_binary_classification_product_backorders.html).
+If you're viewing the Rmd file (code only), but you'd like to see the code *and* output rendered as an HTML document, an online HTML of this file is available [here](https://github.com/navdeep-G/sdss-h2o-automl/blob/master/R/automl_lending_club.nb.html).
 
 ### Start H2O
 
