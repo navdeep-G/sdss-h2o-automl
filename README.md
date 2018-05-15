@@ -87,14 +87,16 @@ For the AutoML Lending Club demo, we use the [Lending Club](https://github.com/n
 
 In this tutorial, you will:
 
-- Perform Basic dataframe manipulations
-- Creating a target (response column)
-- Feature preprocessing & engineering
-- Splitting the data into training and validation sets
-- Building models (GLM & GBM)
-- Evaluating model performance
-- Run a grid search
-- Run AutoML
+- Perform Basic dataframe manipulations.
+- Creating a target (response column).
+- Feature preprocessing & engineering.
+- Splitting the data into training and validation sets.
+- Building models (GLM & GBM).
+- Evaluating model performance.
+- Run a grid search.
+- Run AutoML where stopping is based on max runtime.
+- View the leaderboard (based on cross-validation metrics).
+- Predict using the AutoML leader model.
 
 Demo Notebooks:
 
