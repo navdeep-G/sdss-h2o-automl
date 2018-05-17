@@ -10,7 +10,11 @@ The current version of AutoML (in H2O 3.18.*) trains and cross-validates a defau
 
 ## Setting Up Environment for AutoML Demos:
 
-### R
+###Prerequisites for H2O
+
+[H2O-3 Requirements](http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/9/docs-website/h2o-docs/welcome.html#requirements)
+
+### Install H2O in R
 ```
 # The following two commands remove any previously installed H2O packages for R.
 if ("package:h2o" %in% search()) { detach("package:h2o", unload=TRUE) }
@@ -26,7 +30,7 @@ if (! (pkg %in% rownames(installed.packages()))) { install.packages(pkg) }
 install.packages("h2o", type="source", repos="http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/9/R")
 ```
 
-### Python
+### Install H2O in Python
 ```
 pip install requests
 pip install tabulate
